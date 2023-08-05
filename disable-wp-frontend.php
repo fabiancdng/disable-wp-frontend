@@ -22,7 +22,7 @@ if ( ! function_exists( 'disable_wp_frontend' ) ) {
 		if ( ! is_admin() && ! is_login() ) {
 			// Make sure, the request is not a media file in wp-content (like an image).
 			// Allow all requests to wp-content/uploads/*.
-			if ( ! str_contains( $_SERVER['REQUEST_URI'], '/wp-content/uploads/' ) ) {
+			if ( str_contains( $_SERVER['REQUEST_URI'], '/wp-content/uploads/' ) ) {
 				return;
 			}
 
