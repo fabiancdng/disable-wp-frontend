@@ -2,10 +2,10 @@
 /*
 Plugin Name: Disable WP Frontend
 Plugin URI: https://github.com/fabiancdng/disable-wp-frontend
-Description: Disables the WordPress front end (public-facing part of the website). Leaves Dashboard, API, Media Uploads, and Cron untouched.
+Description: Disables the WordPress front end (public-facing part of the website).
 Author: Fabian Reinders
 Author URI: https://fabiancdng.com
-Version: 1.0
+Version: 1.1
 */
 
 // Exit if accessed directly.
@@ -22,7 +22,7 @@ if ( ! function_exists( 'disable_wp_frontend' ) ) {
 		if ( ! is_admin() && ! is_login() ) {
 			// Make sure, the request is not a media file in wp-content (like an image).
 			// Allow all requests to wp-content/uploads/*.
-			if ( ! str_contains( $_SERVER['REQUEST_URI'], '/wp-content/uploads/' ) ) {
+			if ( str_contains( $_SERVER['REQUEST_URI'], '/wp-content/uploads/' ) ) {
 				return;
 			}
 
