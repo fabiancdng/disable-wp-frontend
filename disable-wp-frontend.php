@@ -20,15 +20,23 @@ if ( ! function_exists( 'disable_wp_frontend' ) ) {
 	function disable_wp_frontend(): void {
 		// Check if request is not wp-admin, wp-login.
 		if ( ! is_admin() && ! is_login() ) {
+			/**
+			 * Array of paths that are allowed to be accessed besides wp-admin and wp-login.
+			 */
+			$path_whitelist = array();
+
 			// Make sure, the request is not a media file in wp-content (like an image).
-			// Allow all requests to wp-content/uploads/*.
-			if ( str_contains( $_SERVER['REQUEST_URI'], '/wp-content/uploads/' ) ) {
-				return;
-			}
+			$path_whitelist[] = '/wp-content/uploads/';
+			$path_whitelist[] = '/favicon.ico';
 
 			// Make sure, the request is not a call to wp-cron.php.
-			if ( str_contains( $_SERVER['REQUEST_URI'], '/wp-cron.php' ) ) {
-				return;
+			$path_whitelist[] = '/wp-cron.php';
+
+			// Make sure, path is not in whitelist.
+			foreach ( $path_whitelist as $path ) {
+				if ( str_contains( $_SERVER['REQUEST_URI'], $path ) ) {
+					return;
+				}
 			}
 
 			// Redirect to wp-admin.
