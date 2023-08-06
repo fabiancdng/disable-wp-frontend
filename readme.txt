@@ -15,6 +15,9 @@ Leaves Dashboard, API, Media Uploads, and Cron untouched.
 
 == Changelog ==
 
+= 1.0.2 =
+* Refactor: Use `$path_whitelist` array for easily whitelisting paths
+
 = 1.0.1 =
 * Fix: `/wp-content/uploads/` exception catches all requests
 
