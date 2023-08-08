@@ -29,6 +29,9 @@ if ( ! function_exists( 'disable_wp_frontend' ) ) {
 			$path_whitelist[] = '/wp-content/uploads/';
 			$path_whitelist[] = '/favicon.ico';
 
+			// Make sure, requests to the RSS feed are allowed.
+			$path_whitelist[] = '/rss';
+
 			// Make sure, the request is not a call to wp-cron.php.
 			$path_whitelist[] = '/wp-cron.php';
 
