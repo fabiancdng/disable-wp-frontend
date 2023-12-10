@@ -1,0 +1,18 @@
+{
+  "name": "fabiancdng/disable-wp-frontend",
+  "description": "A simple, lightweight WordPress plugin to disable the WordPress front end in headless environments.",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "DisableWpFrontend\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Fabian Reinders",
+      "email": "fabian@fabiancdng.com",
+      "homepage": "https://fabiancdng.com"
+    }
+  ],
+  "require": {}
+}
