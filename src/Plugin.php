@@ -13,20 +13,31 @@ defined( 'ABSPATH' ) || exit;
  * Class Plugin as main plugin class.
  */
 class Plugin {
-	public function init(): void {
-		// Run the plugin.
-		add_action( 'init', array( $this, 'run' ) );
+	/**
+	 * Run the plugin.
+	 */
+	public function run(): void {
+		add_action( 'plugins_loaded', array( $this, 'init' ) );
 	}
 
 	/**
-	 * Catch all front end requests and redirect them to wp-admin/wp-login.
+	 * Initialize the plugin by setting up all hook and filter calls of the plugin.
 	 */
-	public function run(): void {
+	public function init(): void {
+		// Initialize the plugin settings and register the settings page (if on the WP dashboard).
+		$plugin_settings = new SettingsPage();
+		$plugin_settings->register_settings_page();
+
 		// Instantiate the RedirectController handling the redirecting of front end requests.
 		$redirect_controller = new RedirectController();
 
 		// If 'disable_wp_frontend_path_whitelist' option is set, use it to set the path whitelist.
-		$path_whitelist = get_option( 'disable_wp_frontend_path_whitelist' );
+		$path_whitelist = get_option( 'disable_wp_frontend_settings' )['exception_settings']['path_whitelist'] ?? array(
+			'/wp-content/uploads/',
+			'/favicon.ico',
+			'/rss',
+			'/wp-cron.php',
+		);
 		if ( false !== $path_whitelist && is_array( $path_whitelist ) ) {
 			$redirect_controller->set_path_whitelist( $path_whitelist );
 		}

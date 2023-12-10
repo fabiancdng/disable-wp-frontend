@@ -15,15 +15,8 @@ defined( 'ABSPATH' ) || exit;
 class RedirectController {
 	/**
 	 * Array of paths that are allowed to be accessed besides wp-admin and wp-login.
-	 *
-	 * @var array
 	 */
-	private array $path_whitelist = array(
-		'/wp-content/uploads/',
-		'/favicon.ico',
-		'/rss',
-		'/wp-cron.php',
-	);
+	private array $path_whitelist = array();
 
 	/**
 	 * Getter for the `$path_whitelist` attribute defining the paths that are allowed to be accessed besides wp-admin and wp-login.

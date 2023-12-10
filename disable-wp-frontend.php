@@ -17,4 +17,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 include_once __DIR__ . '/vendor/autoload.php';
 
 // Initialize and run the plugin.
-( new DisableWpFrontend\Plugin )->init();
+( new DisableWpFrontend\Plugin )->run();
