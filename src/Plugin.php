@@ -17,6 +17,14 @@ class Plugin {
 	 * Run the plugin.
 	 */
 	public function run(): void {
+		// Add settings link on plugin page.
+		add_filter( 'plugin_action_links_' . plugin_basename( self::get_plugin_base_dir() . 'disable-wp-frontend.php' ), function ( $links ) {
+			$settings_link = '<a href="options-general.php?page=disable-wp-frontend">' . __( 'Settings', 'disable-wp-frontend' ) . '</a>';
+			$links[]       = $settings_link;
+
+			return $links;
+		} );
+
 		add_action( 'plugins_loaded', array( $this, 'init' ) );
 	}
 
@@ -45,5 +53,23 @@ class Plugin {
 			// Hook up to the template_redirect action (so for instance REST API calls still work).
 			add_action( 'template_redirect', array( $redirect_controller, 'redirect' ) );
 		}
+	}
+
+	/**
+	 * Get the URL to the base of the plugin: https://{domain}/wp-content/plugins/{plugin-slug}/
+	 *
+	 * @return string URL of plugin base.
+	 */
+	public static function get_plugin_base_url(): string {
+		return plugin_dir_url( __DIR__ );
+	}
+
+	/**
+	 * Get the path to the base of the plugin: /{base_to_WordPress}/wp-content/plugins/{plugin-slug}/
+	 *
+	 * @return string URL of plugin base.
+	 */
+	public static function get_plugin_base_dir(): string {
+		return plugin_dir_path( __DIR__ );
 	}
 }

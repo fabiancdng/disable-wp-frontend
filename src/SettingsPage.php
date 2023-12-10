@@ -178,6 +178,7 @@ class SettingsPage {
                value="1" <?php checked( $disable_wp_frontend, true ); ?> />
         <label for="disable_wp_frontend_general_settings_disable_wp_frontend"><?php esc_html_e( 'Disable WordPress Frontend', 'disable-wp-frontend' ); ?></label>
         <p class="description"><?php esc_html_e( 'Check this box to disable the WordPress frontend and redirect all pages to wp-admin or wp-login (except for the paths whitelisted below).', 'disable-wp-frontend' ); ?></p>
+        <p class="description"><?php esc_html_e( 'We only recommend unchecking this box for testing purposes and otherwise simply deactivating the entire plugin.', 'disable-wp-frontend' ); ?></p>
 		<?php
 	}
 
