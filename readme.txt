@@ -18,6 +18,7 @@ Leaves Dashboard, API, Media Uploads, and Cron untouched.
 = 2.0 =
 * New: Settings page in the WordPress dashboard to whitelist paths and enable/disable the frontend
 * New: Ability to update the plugin within the WordPress dashboard to the latest release
+* Refactor: Use PSR-4 coding standards, composer, and autoloading
 
 = 1.0.2 =
 * Refactor: Use `$path_whitelist` array for easily whitelisting paths
