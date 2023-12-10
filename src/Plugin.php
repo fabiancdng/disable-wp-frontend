@@ -58,7 +58,7 @@ class Plugin {
 		$puc_github_api = $plugin_update_checker->getVcsApi();
 
 		// Enable release assets for the plugin.
-		$puc_github_api->enableReleaseAssets( '.*disable-wp-frontend\.zip.*', Api::REQUIRE_RELEASE_ASSETS );
+		$puc_github_api->enableReleaseAssets( '/.*disable-wp-frontend\.zip.*/', Api::REQUIRE_RELEASE_ASSETS );
 	}
 
 	/**
