@@ -15,6 +15,10 @@ Leaves Dashboard, API, Media Uploads, and Cron untouched.
 
 == Changelog ==
 
+= 2.0.1 =
+* Fix: Uninstall script doesn't delete settings option correctly
+* Fix: Regex pattern matching release asset for plugin update check is missing delimiters
+
 = 2.0 =
 * New: Settings page in the WordPress dashboard to whitelist paths and enable/disable the frontend
 * New: Ability to update the plugin within the WordPress dashboard to the latest release
