@@ -13,5 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Composer autoloader.
+include_once __DIR__ . '/vendor/autoload.php';
+
 // Initialize and run the plugin.
 ( new DisableWpFrontend\Plugin )->init();

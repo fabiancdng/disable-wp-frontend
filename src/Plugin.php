@@ -25,6 +25,12 @@ class Plugin {
 		// Instantiate the RedirectController handling the redirecting of front end requests.
 		$redirect_controller = new RedirectController();
 
+		// If 'disable_wp_frontend_path_whitelist' option is set, use it to set the path whitelist.
+		$path_whitelist = get_option( 'disable_wp_frontend_path_whitelist' );
+		if ( false !== $path_whitelist && is_array( $path_whitelist ) ) {
+			$redirect_controller->set_path_whitelist( $path_whitelist );
+		}
+
 		// Hook up to the template_redirect action (so for instance REST API calls still work).
 		add_action( 'template_redirect', array( $redirect_controller, 'redirect' ) );
 	}
