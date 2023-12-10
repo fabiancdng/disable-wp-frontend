@@ -15,6 +15,9 @@ Leaves Dashboard, API, Media Uploads, and Cron untouched.
 
 == Changelog ==
 
+= 2.0.2 =
+* Fix: Reduce plugin size by removing unnecessary files
+
 = 2.0.1 =
 * Fix: Uninstall script doesn't delete settings option correctly
 * Fix: Regex pattern matching release asset for plugin update check is missing delimiters
