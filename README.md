@@ -13,6 +13,16 @@ A simple, lightweight WordPress plugin to disable the WordPress front end in hea
 
 ![Upload Plugin](.github/media/upload-plugin-screenshot.jpg)
 
+## Excluding URLs
+
+Sometimes you might want to allow access to certain URLs in WordPress.
+
+That's why there is a path whitelist in the plugin's options allowing you to exclude certain URLs from being blocked.
+
+You can find and edit the whitelist on the WordPress admin panel under `Settings -> Disable WP Frontend`.
+
+![Upload Plugin](.github/media/path-whitelist-screenshot.jpg)
+
 ## Updating to a new version
 
 Upgrading to a new version can be done entirely from within the WordPress admin panel. No need to upload a new zip file!
@@ -21,6 +31,8 @@ The plugin will automatically check for updates twice a day.
 
 If you want to check for updates manually, you can click
 the `Check for updates` button on the plugin's settings page.
+
+![Upload Plugin](.github/media/update-plugin-screenshot.jpg)
 
 ## Credits
 
