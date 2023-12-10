@@ -6,6 +6,10 @@
 
 namespace DisableWpFrontend;
 
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+use YahnisElsts\PluginUpdateChecker\v5p3\Vcs\Api;
+use YahnisElsts\PluginUpdateChecker\v5p3\Vcs\GitHubApi;
+
 // If this file is accessed directly, abort.
 defined( 'ABSPATH' ) || exit;
 
@@ -18,7 +22,7 @@ class Plugin {
 	 */
 	public function run(): void {
 		// Add settings link on plugin page.
-		add_filter( 'plugin_action_links_' . plugin_basename( self::get_plugin_base_dir() . 'disable-wp-frontend.php' ), function ( $links ) {
+		add_filter( 'plugin_action_links_' . plugin_basename( self::get_plugin_file() ), function ( $links ) {
 			$settings_link = '<a href="options-general.php?page=disable-wp-frontend">' . __( 'Settings', 'disable-wp-frontend' ) . '</a>';
 			$links[]       = $settings_link;
 
@@ -32,10 +36,44 @@ class Plugin {
 	 * Initialize the plugin by setting up all hook and filter calls of the plugin.
 	 */
 	public function init(): void {
+		$this->init_plugin_update_checker();
+		$this->init_plugin_settings_page();
+		$this->init_redirect_controller();
+	}
+
+	/**
+	 * Initialize the plugin update checker.
+	 */
+	private function init_plugin_update_checker(): void {
+		// Initialize the plugin update checker.
+		$plugin_update_checker = PucFactory::buildUpdateChecker(
+			'https://github.com/fabiancdng/disable-wp-frontend/',
+			self::get_plugin_file(),
+			'disable-wp-frontend'
+		);
+
+		/**
+		 * @var GitHubApi $puc_github_api
+		 */
+		$puc_github_api = $plugin_update_checker->getVcsApi();
+
+		// Enable release assets for the plugin.
+		$puc_github_api->enableReleaseAssets( '.*disable-wp-frontend\.zip.*', Api::REQUIRE_RELEASE_ASSETS );
+	}
+
+	/**
+	 * Initialize the plugin settings page in the WordPress dashboard.
+	 */
+	private function init_plugin_settings_page(): void {
 		// Initialize the plugin settings and register the settings page (if on the WP dashboard).
 		$plugin_settings = new SettingsPage();
 		$plugin_settings->register_settings_page();
+	}
 
+	/**
+	 * Initialize the RedirectController in accordance with the plugin settings.
+	 */
+	private function init_redirect_controller(): void {
 		// Only run the redirect logic if the 'disable_wp_frontend' option is set to true.
 		$disable_wp_frontend_settings = get_option( 'disable_wp_frontend_settings' );
 		if ( ! isset( $disable_wp_frontend_settings['general_settings']['disable_wp_frontend'] ) || true === $disable_wp_frontend_settings['general_settings']['disable_wp_frontend'] ) {
@@ -71,5 +109,14 @@ class Plugin {
 	 */
 	public static function get_plugin_base_dir(): string {
 		return plugin_dir_path( __DIR__ );
+	}
+
+	/**
+	 * Get the path to the plugin file: /{base_to_WordPress}/wp-content/plugins/{plugin-slug}/disable-wp-frontend.php
+	 *
+	 * @return string Path to plugin file.
+	 */
+	public static function get_plugin_file(): string {
+		return self::get_plugin_base_dir() . '/disable-wp-frontend.php';
 	}
 }
