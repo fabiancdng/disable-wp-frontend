@@ -1,6 +1,17 @@
-# Disable WP Frontend
+<div align="center">
+   <h1>Disable WP Frontend</h1>
 
-A simple, lightweight WordPress plugin to disable the WordPress front end in headless environments.
+   <b>A simple, lightweight WordPress plugin to disable the WordPress front end in headless environments.</b>
+</div>
+
+---
+
+## Table of Contents
+
+* [Installation](#installation)
+* [Excluding URLs](#excluding-urls)
+* [Upgrading to a new version](#upgrading-to-a-new-version)
+* [Credits](#credits)
 
 ## Installation
 
@@ -23,7 +34,7 @@ You can find and edit the whitelist on the WordPress admin panel under `Settings
 
 ![Upload Plugin](.github/media/path-whitelist-screenshot.jpg)
 
-## Updating to a new version
+## Upgrading to a new version
 
 Upgrading to a new version can be done entirely from within the WordPress admin panel. No need to upload a new zip file!
 
