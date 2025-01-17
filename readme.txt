@@ -3,7 +3,7 @@ Contributors: fabiancdng
 Tags: disable, wp frontend, frontend, headless
 Donate link: https://paypal.me/fabiancdng
 Requires at least: 6.0
-Tested up to: 6.4.2
+Tested up to: 6.7.1
 Requires PHP: 7.4
 
 Disables the WordPress front end (public-facing part of the website).
@@ -14,6 +14,10 @@ Leaves Dashboard, API, Media Uploads, and Cron untouched.
 
 
 == Changelog ==
+
+= 2.1 =
+* Upgrade yahnis-elsts/plugin-update-checker to v5.5
+* Tested up to 6.7.1
 
 = 2.0.3 =
 * Include license
