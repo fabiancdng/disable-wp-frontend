@@ -1,5 +1,6 @@
 {
   "name": "fabiancdng/disable-wp-frontend",
+  "version": "2.1",
   "description": "A simple, lightweight WordPress plugin to disable the WordPress front end in headless environments.",
   "type": "project",
   "autoload": {
@@ -15,6 +16,6 @@
     }
   ],
   "require": {
-    "yahnis-elsts/plugin-update-checker": "^5.3"
+    "yahnis-elsts/plugin-update-checker": "^5.5"
   }
 }
