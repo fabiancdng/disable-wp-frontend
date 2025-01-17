@@ -4,8 +4,8 @@ Plugin Name: Disable WP Frontend
 Plugin URI: https://github.com/fabiancdng/disable-wp-frontend
 Description: Disables the WordPress front end (public-facing part of the website).
 Author: Fabian Reinders
-Author URI: https://fabiancdng.com
-Version: 2.0.2
+Author URI: https://github.com/fabiancdng
+Version: 2.0.3
 */
 
 // Exit if accessed directly.

@@ -15,6 +15,9 @@ Leaves Dashboard, API, Media Uploads, and Cron untouched.
 
 == Changelog ==
 
+= 2.0.3 =
+* Include license
+
 = 2.0.2 =
 * Fix: Reduce plugin size by removing unnecessary files
 
