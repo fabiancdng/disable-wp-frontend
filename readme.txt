@@ -15,6 +15,9 @@ Leaves Dashboard, API, Media Uploads, and Cron untouched.
 
 == Changelog ==
 
+= 2.1.1 =
+* Fix: Critical error related to PUC
+
 = 2.1 =
 * Upgrade yahnis-elsts/plugin-update-checker to v5.5
 * Tested up to 6.7.1
